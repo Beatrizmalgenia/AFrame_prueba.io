@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Modelo local</title>
+  <meta name="description" content="Model Viewer (VR / AR) • A-Frame">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <!--script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script-->
+  <script src="js/aframe.min.js"></script>
+  
+  <script src="../../../dist/aframe-master.js"></script>
+  <!--script src="https://unpkg.com/aframe-environment-component@1.3.0/dist/aframe-environment-component.min.js"></script-->
+<!--encodeURI(chr)-->
+
+ <script>
+AFRAME.registerComponent('clickhandler', {
+        schema: {
+          txt: {default:'default'}
+        },        
+        init: function () {
+          var data = this.data;
+          var el = this.el; 
+            var posterActual;
+            var idInfoPostal;
+          el.addEventListener('click', function () {            
+           
+              idInfoPostal="#"+data.txt;
+            //  idInfoPostal="#info_Postal"+data.txt;
+              console.log(idInfoPostal);
+           console.log(el.id);
+        
+              var buttonEls = document.querySelectorAll('.infoPostal');
+                for (var i = 0; i < buttonEls.length; ++i) {
+                    buttonEls[i].object3D.visible = false;
+                } 
+              
+           this.posterActual = document.querySelector(idInfoPostal);  
+           this.posterActual.object3D.visible = true;
+
+          /*
+              this.posterActual = document.querySelector('#Gloria');
+              this.posterActual.object3D.src = idInfoPostal;
+              this.posterActual.object3D.visible = true;
+        */
+          });        
+        }
+      });
+     AFRAME.registerComponent('esconder',   {  
+        schema: {},
+        init: function () {
+          var el = this.el; 
+          var posterActivo; 
+           var idInfoPostal;    
+          el.addEventListener('click', function () {            
+          console.log(el.id);
+              idInfoPostal="#"+el.id;
+           this.posterActivo = document.querySelector(idInfoPostal); 
+              if( this.posterActivo.object3D.visible)
+           this.posterActivo.object3D.visible = false;
+              
+          });        
+        }
+      });
+     AFRAME.registerComponent('navigate-on-click', {
+    schema: {
+      url: {default: ''}
+    },
+
+    init: function () {
+      var data = this.data;
+      var el = this.el;
+
+      el.addEventListener('click', function () {
+      //  window.location.href = data.url;
+          window.location.replace(data.url);
+      });
+    }
+  });        
+</script>   
+    
+</head>
+<body>
+
+    
+    <a-scene>
+  <a-assets>
+    <!--modelo y amnbiente-->
+    <a-asset-item id="cuerpx-obj" src="models/AnimaciónCuerpoCostura_Web.obj"></a-asset-item>
+    <a-asset-item id="cuerpx-mtl" src="models/AnimaciónCuerpoCostura_Web.mtl"></a-asset-item>
+    <img id="sky" src="models/textures/table_mountain_1_puresky.jpg">
+    <img id="ground" src="models/textures/floor_tiles_06_diff_4k.jpg">
+    <!--Postales-->
+    <img id="boton_Gloria" src="img/Boton_PostalGloria.jpg">  <!--el botón es el mismo poster--> 
+    <img id="info_PostalGloria" src="img/PostalGloria.jpg">         <!--La postal es la info completa que se agranda-->
+    <img id="boton_Camila" src="img/Boton_PostalCamila.jpg">  
+    <img id="info_PostalCamila" src="img/PostalCamila.jpg">                   
+    <img id="boton_Margarita" src="img/Boton_PostalMargarita.jpg">  
+    <img id="info_PostalMargarita" src="img/PostalMargarita.jpg">                   
+    <img id="boton_Erika" src="img/Boton_PostalErika.jpg">  
+    <img id="info_PostalErika" src="img/PostalErika.jpg">                   
+    <img id="boton_Adriana" src="img/Boton_PostalAdriana.jpg">  
+    <img id="info_PostalAdriana" src="img/PostalAdriana.jpg">                   
+    <img id="Sinopsis" src="img/SinopsisCostu21.png">
+    <img id="taller" src="img/EnTaller.jpg">
+    <img id="modelando" src="img/Modelando.png">
+      <img id="expo1" src="img/Expo.jpg">
+       <img id="expo2" src="img/Expo1.JPG">
+       <img id="expo3" src="img/Expo2.jpg">
+    <img id="botonArt" src="img/botonArtista.png">
+    <img id="botonvid" src="img/botonVideo.png">
+
+      <!--Styles-->     
+      <a-mixin
+          id="postal"
+          geometry="primitive: plane; width: 0.7; height: 0.9"
+          material="color: white; shader: flat"
+          material="shader: flat"
+          position="0 0 0.005">
+      </a-mixin> 
+      <a-mixin
+          id="infoPostal"
+          geometry="primitive: plane; width: 3.5; height: 2.81 "
+          material=" color: white; shader: flat"
+          position="2.4 2.8 -4.9">
+      </a-mixin>
+        
+        
+</a-assets>
+
+ 
+  <a-sky src="#sky" ></a-sky> 
+  <a-plane src="#ground" material="color:#FFFFFF; 
+                     src=#ground; 
+                     repeat=4 4"
+           rotation="-90 0 0"
+           scale="20 20 1">
+  </a-plane>
+  <!-- Using the asset management system. -->
+  <a-obj-model src="#cuerpx-obj" mtl="#cuerpx-mtl"  ></a-obj-model>
+    
+
+    <a-plane src= "#boton_Gloria"  position="0.8 1 -4.5"  clickhandler="txt:Gloria" mixin="postal"></a-plane>
+    <a-plane src= "#boton_Camila"  position="1.6 1 -4.7"  clickhandler="txt:Camila" mixin="postal"></a-plane>
+    <a-plane src= "#boton_Margarita"  position="2.4 1 -4.9"  clickhandler="txt:Margarita" mixin="postal"></a-plane>
+    <a-plane src= "#boton_Erika"  position="3.2 1 -4.9"  clickhandler="txt:Erika" mixin="postal"></a-plane>
+    <a-plane src= "#boton_Adriana"  position="4 1 -4.8"  clickhandler="txt:Adriana" mixin="postal"></a-plane>
+
+    <a-plane src= "#info_PostalGloria" id="Gloria"  visible="true" esconder mixin="infoPostal" class="infoPostal"></a-plane>
+    <a-plane src= "#info_PostalCamila" id="Camila" visible="false" esconder mixin="infoPostal" class="infoPostal"></a-plane>
+    <a-plane src= "#info_PostalMargarita" id="Margarita" visible="false" esconder mixin="infoPostal" class="infoPostal"></a-plane>
+    <a-plane src= "#info_PostalErika" id="Erika" visible="false" esconder mixin="infoPostal" class="infoPostal"></a-plane>    
+    <a-plane src= "#info_PostalAdriana" id="Adriana" visible="false" esconder mixin="infoPostal" class="infoPostal"></a-plane>    
+
+      
+       
+      
+        
+        <a-plane src= "#Sinopsis"  transparent="true" position="-1.5 1 -2" width= "1.5" height= "1.7"   ></a-plane> 
+      
+        
+    <a-image src="#taller" width="1.7" height="1.4" rotation="0 120 0" position="-6.5 1 -2" ></a-image>
+         <a-image src="#modelando" width="1.7" height="1.4" rotation="0 120 0" position="-6.5 2.5 -2" ></a-image>
+        
+         <a-image src="#expo1" width="1.7" height="1.4" rotation="0 90 0" position="-7 1 -3.8" ></a-image>
+        <a-image src="#expo3" width="1.7" height="1.4" rotation="0 90 0" position="-7 2.5 -3.8" ></a-image>
+         <a-image src="#expo2" width="1" height="1.4" rotation="0 50 0" position="-6.5 2.5 -5.6" ></a-image>
+        
+
+        
+         <a-plane src= "#botonArt"  position="8 1 -4"  navigate-on-click="url:https://malgenia.wixsite.com/mal-genia/"  rotation="0 -50 0"  transparent="true"  scale="0.5 0.5 0.5" ></a-plane>
+         <a-plane src= "#botonvid"  position="8 1 -3.5"  navigate-on-click="url:https://www.youtube.com/watch?v=aTDtK2RURZg&t=1s/"  rotation="0 -50 0"  transparent="true" scale="0.5 0.5 0.5" ></a-plane>
+
+
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
+
+
+
+</a-scene>
+    
+ 
+</body>
+</html>

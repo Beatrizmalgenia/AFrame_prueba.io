@@ -1,0 +1,72 @@
+# Blender 3.3.0 MTL File: 'AnimaciónCuerpoCostura2_Web.blend'
+# www.blender.org
+
+newmtl Mano2
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/TelaCamila.png
+
+newmtl Material
+Ns 338.318268
+Ka 1.000000 1.000000 1.000000
+Kd 0.096990 0.141259 0.037305
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+
+newmtl None
+Ns 555.555481
+Ka 1.000000 1.000000 1.000000
+Kd 0.006370 0.006370 0.006370
+Ks 0.800000 0.800000 0.800000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl TelaMargarita
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd textures/telaMargarita.png
+
+newmtl laberintos
+Ns 555.555481
+Ka 1.000000 1.000000 1.000000
+Ks 0.800000 0.800000 0.800000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd textures/BarradeColores.png
+
+newmtl noise1
+Ns 345.013641
+Ka 0.242718 0.242718 0.242718
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd textures/textura2.jpg
+
+newmtl peluche
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+map_Kd textures/plush-white-fabric-texture.jpg
+map_d textures/plush-white-fabric-texture.jpg
